@@ -11,7 +11,6 @@ class crudApp{
         $dbname = "crud";
 
         $this->conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
         if(!$this->conn){
             die("Database Connection Failed!");
         }
@@ -41,9 +40,9 @@ class crudApp{
 
     }
 
-
     public function display_data_by_id($id){
         $query = "SELECT * FROM information WHERE id = $id";
+        
         if(mysqli_query($this->conn, $query)){
             $returndata = mysqli_query($this->conn, $query);
             $studentData = mysqli_fetch_assoc($returndata);
@@ -78,10 +77,5 @@ class crudApp{
             unlink('./upload/'.$delImg_data);
             return "Deleted Successfully";
         }
-
-
     }
-
-
-
 }
